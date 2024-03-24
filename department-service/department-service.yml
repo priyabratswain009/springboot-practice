@@ -15,7 +15,7 @@ spec:
         app: department-service-app
     spec:
       containers:
-      - name: deployment-seervice-app
+      - name: department-seervice-app
         image: priyabratswainn009/spring:department
         imagePullPolicy: Always
         ports:
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: department-service-app
+  name: department-service-svc
 spec:
   selector:
     app:  department-service-app

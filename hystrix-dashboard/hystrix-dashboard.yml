@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service-app
+  name: hystrix-dashboard-app
   labels:
-    app: user-service-app
+    app: hystrix-dashboard-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-service-app
+      app: hystrix-dashboard-app
   template:
     metadata:
       labels:
-        app: user-service-app
+        app: hystrix-dashboard-app
     spec:
       containers:
-      - name: user-seervice-app
-        image: priyabratswainn009/spring:user
+      - name: hystrix-dashboard-app
+        image: priyabratswainn009/spring:hystrix
         imagePullPolicy: Always
         ports:
-        - containerPort: 9002
+        - containerPort: 9296
 
 ---------------------------------   
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service-svc
+  name: hystrix-dashboard-svc
 spec:
   selector:
-    app:  user-service-app
+    app:  hystrix-dashboard-app
   ports:
   - port: 80
-    targetPort: 9002
-  type: ClusterIP
+    targetPort: 9296
+  type: NodePort
 
 
   
