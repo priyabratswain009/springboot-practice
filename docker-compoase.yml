@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  service-registry:
+    image: priyabratswainn009@/spring/registry-1.0
+    ports:
+      - "8761:8761"
+
+  user-service:
+    image: priyabratswainn009/spring:userservice
+    ports:
+      - "9002:9002"
+
+  department-service:
+    image:  priyabratswainn009/spring:department
+    ports:
+      - "9001:9001"
+
+  cloud-gateway:
+    image: priyabratswainn009/spring:gateway
+    ports:
+      - "9191:9191"
+  
+  config-server:
+    image: priyabratswainn009/spring:configserver
+    ports:
+      - "9296"
+
+  hystrix-dashboard:
+    image: priyabratswainn009/spring:hystrix
+    ports:
+      - "9295:9295"
