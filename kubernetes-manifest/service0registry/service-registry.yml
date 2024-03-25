@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka
+  serviceName: eureka
+  template:
+    metadata:
+      labels:
+        app: eureka
+    spec:
+      containers:
+      - name: eureka
+        image: priyabratswainn009/spring:service
+        ports:
+        - containerPort: 8761
+        env:
+          - name: EUREKA_SERVER_ADDRESS
+            valueFrom:
+              configMapRef:
+                name: eureka-cm
+                key: eureka_service_address  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
