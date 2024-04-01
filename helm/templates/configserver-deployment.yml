@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-config-server-app
+  labels:
+    app: cloud-config-server-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-config-server-app
+  template:
+    metadata:
+      labels:
+        app: cloud-config-server-app
+    spec:
+      containers:
+      - name: cloud-config-server-app
+        image: {{ .Values.image.repo }}/spring:configserver
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9296
+
+
+
+  
