@@ -10,4 +10,4 @@ spec:
     targetPort: 8761
     name: eureka
   type: LoadBalancer
-~                        
+              
